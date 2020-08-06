@@ -1,10 +1,6 @@
 package com.linda.contactsapp.service;
 
-import android.content.Context;
-
 import com.linda.contactsapp.db.model.Contact;
-import com.linda.contactsapp.db.model.ContactAppDatabase;
-import com.linda.contactsapp.db.model.DBConn;
 import com.linda.contactsapp.repository.ContactRepository;
 
 import java.util.ArrayList;

@@ -15,6 +15,8 @@ import com.linda.contactsapp.db.model.Contact;
 
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ViewHolder> {
 
     private static final String TAG = "ContactsAdapter";
@@ -38,15 +40,17 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ViewHold
 
         TextView tvName;
         TextView tvEmail;
+        CircleImageView ivProfile;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             Log.d(TAG, "ViewHolder: ");
             tvName = itemView.findViewById(R.id.tv_name);
             tvEmail = itemView.findViewById(R.id.tv_email);
+            ivProfile = itemView.findViewById(R.id.iv_profile);
         }
 
-        void setItem(String name, String email){
+        void setItem(String name, String email, String profileURL){
             Log.d(TAG, "setItem: ");
             tvName.setText(name);
             tvEmail.setText(email);
@@ -65,13 +69,13 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ViewHold
     public void onBindViewHolder(@NonNull ContactAdapter.ViewHolder holder, final int position) {
         // 컬렉션 증가 변화에만 반응함.
         final Contact contact = contacts.get(position);
-        holder.setItem(contact.getName(), contact.getEmail());
+        holder.setItem(contact.getName(), contact.getEmail(), contact.getProfileURL());
 
-        // 데이터 바인딩할 때 이벤트 달기
+        // 데이터 바인딩할 때 이벤트 달기//뷰가 생길때마다 아니라
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //mainActivity.editContact(contact, position);
+                mainActivity.editContactDialog(contact);
             }
         });
     }

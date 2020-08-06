@@ -1,8 +1,10 @@
-package com.linda.contactsapp.db.model;
+package com.linda.contactsapp.db;
 
 import android.content.Context;
 
 import androidx.room.Room;
+
+import com.linda.contactsapp.db.ContactAppDatabase;
 
 public class DBConn {
 
